@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,12 @@ namespace Peacock.Database.Repositories
     {
         Task<Movie> GetById(int id);
 
+        Task<IEnumerable<Movie>> SearchByTitle(string searchString);
+
         Task AddMovie(string title, int releaseYear);
 
         Task AddMovies(IEnumerable<Movie> movies);
+
     }
 
     public class MovieRepository : IMovieRepository
@@ -38,6 +42,11 @@ namespace Peacock.Database.Repositories
         public async Task<Movie> GetById(int id)
         {
             return await _context.FindAsync<Movie>(id);
+        }
+
+        public async Task<IEnumerable<Movie>> SearchByTitle(string searchString)
+        {
+            return await _context.Movies.Where(m => m.Title.Contains(searchString)).ToListAsync();
         }
     }
 }

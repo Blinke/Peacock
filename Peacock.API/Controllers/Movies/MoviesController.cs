@@ -33,5 +33,18 @@ namespace Peacock.API.Controllers.Movies
 
             return Ok(_mapper.Map<Movie>(dbMovie));
         }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<List<Movie>>> SearchByTitle(string title)
+        {
+            var dbMovies = await _movieRepository.SearchByTitle(title);
+
+            if(!dbMovies.Any())
+            {
+                return NotFound($"No movies found matching search {title}");
+            }
+
+            return Ok(dbMovies.Select(m =>_mapper.Map<Movie>(m)).ToList());
+        }
     }
 }
