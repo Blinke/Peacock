@@ -10,7 +10,8 @@ using Peacock.Database.Repositories;
 namespace Peacock.API.Controllers.Movies
 {
     [Route("movies")]
-    public class MoviesController : Controller
+    [ApiController]
+    public class MoviesController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IMovieRepository _movieRepository;
