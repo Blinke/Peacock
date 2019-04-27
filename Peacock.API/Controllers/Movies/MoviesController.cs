@@ -22,12 +22,20 @@ namespace Peacock.API.Controllers.Movies
             _movieRepository = movieRepository;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<Movie>>> GetAll()
+        {
+            var dbMovies = await _movieRepository.ListMovies();
+
+            return Ok(dbMovies.Select(m => _mapper.Map<Movie>(m)).ToList());
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetById(int id)
         {
             var dbMovie = await _movieRepository.GetById(id);
 
-            if(dbMovie == null)
+            if (dbMovie == null)
             {
                 return NotFound($"Movie with id {id} not found.");
             }
@@ -40,12 +48,12 @@ namespace Peacock.API.Controllers.Movies
         {
             var dbMovies = await _movieRepository.SearchByTitle(title);
 
-            if(!dbMovies.Any())
+            if (!dbMovies.Any())
             {
                 return NotFound($"No movies found matching search {title}");
             }
 
-            return Ok(dbMovies.Select(m =>_mapper.Map<Movie>(m)).ToList());
+            return Ok(dbMovies.Select(m => _mapper.Map<Movie>(m)).ToList());
         }
     }
 }

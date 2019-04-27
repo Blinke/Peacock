@@ -29,9 +29,14 @@ namespace Peacock.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddTransient<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
 
-            services.AddDbContext<MovieContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestDb")));
+            //services.AddDbContext<MovieContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestDb")));
+            services.AddDbContext<MovieContext>(options =>
+            {
+                options.UseInMemoryDatabase("TestDb");
+                options.EnableSensitiveDataLogging();
+            });
 
             services.AddSingleton(AutoMapperConfiguration.Configure().CreateMapper());
         }

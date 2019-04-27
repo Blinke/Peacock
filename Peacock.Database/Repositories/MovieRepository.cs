@@ -11,6 +11,8 @@ namespace Peacock.Database.Repositories
     {
         Task<Movie> GetById(int id);
 
+        Task<IEnumerable<Movie>> ListMovies();
+
         Task<IEnumerable<Movie>> SearchByTitle(string searchString);
 
         Task AddMovie(string title, int releaseYear);
@@ -23,10 +25,19 @@ namespace Peacock.Database.Repositories
     {
         private readonly MovieContext _context;
 
+        private static bool _dataSeeded = false;
+
         public MovieRepository(MovieContext context)
         {
             _context = context;
+
+            if(!_dataSeeded)
+            {
+                _context.Database.EnsureCreated();
+                _dataSeeded = true;
+            }
         }
+
 
         public Task AddMovie(string title, int releaseYear)
         {
@@ -46,7 +57,12 @@ namespace Peacock.Database.Repositories
 
         public async Task<IEnumerable<Movie>> SearchByTitle(string searchString)
         {
-            return await _context.Movies.Where(m => m.Title.Contains(searchString)).ToListAsync();
+            return await _context.Movies.Where(m => m.Title.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Movie>> ListMovies()
+        {
+            return await _context.Movies.ToListAsync();
         }
     }
 }
