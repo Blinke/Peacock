@@ -1,13 +1,27 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
+using NUnit.Framework;
 
 namespace Peacock.BadTests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestFixture]
+    public class When_requesting_a_movie
     {
-        [TestMethod]
-        public void TestMethod1()
+        [OneTimeSetUp]
+        public void Init()
         {
+
+        }
+
+        [Test]
+        public void Then_X_is_mapped()
+        {
+            Debug.WriteLine("X is mapped");
+        }
+
+        [Test]
+        public void Then_Y_is_mapped()
+        {
+            Debug.WriteLine("Y is mapped");
         }
     }
 }
