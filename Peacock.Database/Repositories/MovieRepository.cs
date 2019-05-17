@@ -31,17 +31,22 @@ namespace Peacock.Database.Repositories
         {
             _context = context;
 
-            if(!_dataSeeded)
+            if (!_dataSeeded)
             {
                 _context.Database.EnsureCreated();
                 _dataSeeded = true;
             }
         }
 
-
-        public Task AddMovie(string title, int releaseYear)
+        public async Task AddMovie(string title, int releaseYear)
         {
-            throw new NotImplementedException();
+            _context.Movies.Add(new Movie()
+            {
+                ReleaseYear = releaseYear,
+                Title = title
+            });
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task AddMovies(IEnumerable<Movie> movies)

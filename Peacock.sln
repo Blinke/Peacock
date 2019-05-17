@@ -5,13 +5,11 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peacock.API", "Peacock.API\Peacock.API.csproj", "{7FCD2643-4F9E-4B41-B855-2812ABD03296}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peacock.Setup", "Peacock.Setup\Peacock.Setup.csproj", "{2EFFD230-8A85-42D5-AD22-930B01802C18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peacock.Database", "Peacock.Database\Peacock.Database.csproj", "{85E723CE-AB40-4918-A70E-03FDD60F5012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peacock.Database", "Peacock.Database\Peacock.Database.csproj", "{85E723CE-AB40-4918-A70E-03FDD60F5012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peacock.TestsBad", "Peacock.BadTests\Peacock.TestsBad.csproj", "{8ACEFF56-D025-4C87-BD49-563BC6E0D28E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peacock.TestsBad", "Peacock.BadTests\Peacock.TestsBad.csproj", "{8ACEFF56-D025-4C87-BD49-563BC6E0D28E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peacock.TestsGood", "Peacock.GoodTests\Peacock.TestsGood.csproj", "{13873CF8-15B7-4790-8E93-DF3E7ADA4F3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peacock.TestsGood", "Peacock.GoodTests\Peacock.TestsGood.csproj", "{13873CF8-15B7-4790-8E93-DF3E7ADA4F3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{7FCD2643-4F9E-4B41-B855-2812ABD03296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FCD2643-4F9E-4B41-B855-2812ABD03296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FCD2643-4F9E-4B41-B855-2812ABD03296}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EFFD230-8A85-42D5-AD22-930B01802C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EFFD230-8A85-42D5-AD22-930B01802C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EFFD230-8A85-42D5-AD22-930B01802C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EFFD230-8A85-42D5-AD22-930B01802C18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85E723CE-AB40-4918-A70E-03FDD60F5012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{85E723CE-AB40-4918-A70E-03FDD60F5012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85E723CE-AB40-4918-A70E-03FDD60F5012}.Release|Any CPU.ActiveCfg = Release|Any CPU
